@@ -11,6 +11,10 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
+
 import argparse
 import copy
 import getpass
@@ -38,6 +42,7 @@ DEFAULT_ENV_PATH = '%s/.visdom/' % expanduser("~")
 DEFAULT_PORT = 8097
 
 here = os.path.abspath(os.path.dirname(__file__))
+
 
 def get_rand_id():
     return str(hex(int(time.time() * 10000000))[2:])
